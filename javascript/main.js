@@ -28,12 +28,16 @@ function createBook() {
 }
 
 function displayBook() {
-  myLibrary.forEach((book) => {
+  myLibrary.forEach((book, index) => {
     let container = document.getElementById('library');
     let bookDiv = document.createElement('div');
+    bookDiv.setAttribute('id', index);
     let titleDisplay = document.createElement('p');
     let authorDisplay = document.createElement('p');
     let pagesDisplay = document.createElement('p');
+    let removeButton = document.createElement('button');
+    removeButton.innerText = 'Remove Book';
+    removeButton.setAttribute('class', 'removeBtn');
     
     titleDisplay.innerText = book.title
     authorDisplay.innerText = book.author
@@ -43,14 +47,32 @@ function displayBook() {
     bookDiv.appendChild(titleDisplay);
     bookDiv.appendChild(authorDisplay);
     bookDiv.appendChild(pagesDisplay);
+    bookDiv.appendChild(removeButton);
   })
+}
+
+function removeBook() {
+  // get book from HTML getElementById(#)
+  // abstract action to remove book
+  // array [{id:0}, {id: 1}, {id:2}]
+  let book = document.getElementById(1);
+  console.log(book);
 }
 
 
 const btn = document.querySelector('#btn');
 btn.addEventListener('click', (e) => {
-  alert("Hello World");
+  // alert("Hello World");
   e.preventDefault()
   createBook();
   displayBook();
 });
+
+let removeBtn = document.querySelector('.removeBtn');
+if (removeBtn) {
+  removeBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    alert("You sure you wanna remove me????");
+    // removeBook();
+  })
+}
