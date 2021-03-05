@@ -22,7 +22,7 @@ function createBook() {
   let titleInput = document.getElementById('title').value;
   let authorInput = document.getElementById('author').value;
   let pagesInput = document.getElementById('pages').value;
-  let newBook = new Books(titleInput, authorInput, pagesInput);
+  let newBook = new Book(titleInput, authorInput, pagesInput);
   if (titleInput.length > 1 && authorInput.length > 1 && pagesInput > 0) {
   myLibrary.push(newBook);
   }
