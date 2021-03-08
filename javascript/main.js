@@ -1,48 +1,26 @@
-let myLibrary = [];
+const myLibrary = [];
 window.myLibrary = myLibrary;
 let counter = 0
 
 function Book(title, author, pages, status) {
-  if (status === 'read') {
-    status = true;
-  } else {
-    status = false;
-  }
-
-  this.id = counter++
+  this.id = counter
   this.title = title
   this.author = author
   this.pages = pages
   this.status = status
-
+  counter++
 }
 
-const book = new Book('Harry Potter', 'JK Rowling', 400, 'Read')
-console.log(book)
-myLibrary.push(book);
-
-const book2 = new Book('Lolita', 'Samba', 600, 'Not Read')
-console.log(book2)
-myLibrary.push(book2);
-
-console.log(myLibrary);
-
-function createBook(item) {
+function createBook() {
   let titleInput = document.getElementById('title').value;
   let authorInput = document.getElementById('author').value;
   let pagesInput = document.getElementById('pages').value;
   let statusInput = document.getElementById('status').value;
-  console.log(statusInput)
   let newBook = new Book(titleInput, authorInput, pagesInput, statusInput);
   if (titleInput.length > 1 && authorInput.length > 1 && pagesInput > 0) {
   myLibrary.push(newBook);
   }
-}
- 
-function Render() {
-  for (let i=0; i<myLibrary.length; i++) {
-    dispplayBook(myLibrary[i]);
-  }
+  console.log(myLibrary)
 }
 
 function displayBook(item) {
@@ -50,7 +28,7 @@ function displayBook(item) {
   container.innerHTML = ''
   myLibrary.forEach((book, index) => {
     let bookDiv = document.createElement('div');
-    bookDiv.setAttribute('id', myLibrary.indexOf(item)); // add an atribute of its corresponded index
+    bookDiv.setAttribute('id', myLibrary.length - 1); // add an atribute of its corresponded index
     let titleDisplay = document.createElement('p');
     let authorDisplay = document.createElement('p');
     let pagesDisplay = document.createElement('p');
@@ -58,77 +36,52 @@ function displayBook(item) {
     let removeButton = document.createElement('button');
     removeButton.innerText = 'Delete';
     removeButton.setAttribute('class', 'removeBtn');
-    
+    statusDisplay.setAttribute('class', 'status-btn');
+    removeButton.setAttribute('data-id', myLibrary.length - 1);
     titleDisplay.innerText = book.title
     authorDisplay.innerText = book.author
     pagesDisplay.innerText = book.pages
-    
-    if (book.status === true) {
+    if (book.status === 'read') {
       statusDisplay.innerText = 'Read';
     } else {
       statusDisplay.innerText = 'Unread';
     }
-
     container.appendChild(bookDiv);
     bookDiv.appendChild(titleDisplay);
     bookDiv.appendChild(authorDisplay);
     bookDiv.appendChild(pagesDisplay);
-
     bookDiv.appendChild(statusDisplay);
-    
-
-    /* if(item.status===false) {
-      statusDisplay.textContent = 'Not Read';
-    } else {
-      statusDisplay.textContent = 'Read';
-    } */
-
     bookDiv.appendChild(removeButton);
     })
+    deleteBtn()
+    changeStatus()
+}
 
-    
-    
-
-    let removeBtn = document.querySelectorAll('.removeBtn'); // to return all of the removeBtn elements in a page
+const deleteBtn = () =>{
+ const removeBtn = document.querySelectorAll('.removeBtn'); // to return all of the removeBtn elements in a page
+    console.log(removeBtn)
     removeBtn.forEach((btn) => {
       btn.addEventListener('click', (e) => {
-      
-      myLibrary.splice(myLibrary.indexOf(e), 1);
-
+      myLibrary.splice(e.target.dataset.id - 1, 1)
+      console.log(myLibrary)
+        displayBook()
       })
     }) 
-    
-
-    /* statusDisplay.addEventListener('click', () => { 
-      item.status = !item.status; 
-
-      render();
-    });  */
-
-  /* let x = document.querySelectorAll('p');
-  const box = document.getElementById('status');
-  checkbox.addEventListener('change', () => {
-  box.classList.toggle('red-background');
-  }); */
-  
-/*   function myFunction(status) {
-    var x = document.getElementById("status");
-    if (x.innerHTML === "read") {
-      x.innerHTML = "Read";
-    } else {
-      x.innerHTML = "Unread";
-    }
-  }
-
-  console.log(myFunction); */
-  
-
 }
-/* function changeReadStatus(e) {
-  myLibrary[e.getElementById('status')].toggleReadStatus();
-  displayBooks();
+const changeStatus = () => {
+  const statusBtn = document.querySelectorAll('.status-btn');
+  statusBtn.forEach(btn => {
+    btn.addEventListener('click', e => {
+      getStatusValue(e)
+    })
+  })
 }
-*/
+const getStatusValue = (e) => {
+  e.target.innerHTML.toUpperCase() === 'READ' 
+                      ? e.target.innerHTML = 'Unread' 
+                      : e.target.innerHTML = 'Read'
+}
+
 const btn = document.querySelector('#btn');
 btn.addEventListener('click', (e) => {
   e.preventDefault()
@@ -136,12 +89,3 @@ btn.addEventListener('click', (e) => {
   displayBook();
 }); 
 
-function findBook(id) {
-  let theBook = null;
-  myLibrary.forEach((book) => {
-    if (book.id === id) {
-      theBook = book
-    }
-  })
-  return theBook;
-}
