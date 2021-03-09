@@ -59,13 +59,22 @@ function displayBook() {
     changeStatus()
 }
 
+const bookForm = () => {
+  const theForm = document.getElementById("theForm");
+  if (theForm.style.display === "none" || theForm.style.display === '') {
+    theForm.style.display = "block";
+  } else {
+    theForm.style.display = "none";
+  }
+}
+
 const deleteBtn = () => {
  const removeBtn = document.querySelectorAll('.removeBtn'); // to return all of the removeBtn elements in a page
-    console.log(removeBtn)
+    // console.log(removeBtn)
     removeBtn.forEach((btn) => {
       btn.addEventListener('click', (e) => {      //.e.target: returns the element that triggered the event, va al boton donde hice click y me da el valor del data-id = X con dataset.od
       myLibrary.splice(e.target.dataset.id - 1, 1) //estoy eliminando el boton con el id = x del array
-      console.log(myLibrary)
+      // console.log(myLibrary)
         displayBook()
       })
     })
