@@ -40,3 +40,42 @@ body h1,
 .libraryDiv {
   margin-bottom: 5rem;
 }
+
+.libraryDiv div :nth-child(1) {
+  font-weight: bold;
+}
+
+.libraryDiv div :nth-child(3) {
+  font-weight: bold;
+}
+
+.libraryDiv div :nth-child(5) {
+  font-weight: bold;
+}
+
+.libraryDiv div {
+  padding: 2rem;
+  margin-top: 2.5rem;
+  background-color: rgb(219, 234, 243);
+}
+
+.buttons-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.status-btn, .removeBtn {
+  font-size: 16px !important;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+  color: whitesmoke;
+}
+
+.removeBtn {
+  background-color: crimson;
+}
+
+.status-btn {
+  background-color: teal;
+}

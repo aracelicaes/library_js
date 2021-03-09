@@ -33,28 +33,40 @@ function displayBook() {
     let bookDiv = document.createElement('div');
     bookDiv.setAttribute('id', myLibrary.length - 1); // the id is the lenght of the library and -1 becuase i want to start from index 0
     let titleDisplay = document.createElement('p');
+    let titleName = document.createElement('p');
     let authorDisplay = document.createElement('p');
+    let authorName = document.createElement('p');
     let pagesDisplay = document.createElement('p');
+    let pagesNumber = document.createElement('p');
+    let buttonsDiv = document.createElement('div');
     let statusDisplay = document.createElement('button');
     let removeButton = document.createElement('button');
     removeButton.innerText = 'Delete';
+    buttonsDiv.setAttribute('class', 'buttons-div')
     removeButton.setAttribute('class', 'removeBtn');
     statusDisplay.setAttribute('class', 'status-btn'); //the id is uniwue so to be the same as the id from bookDiv we set it in data-id attribute, porque no deberia haber 2 elementos con el mismo id
     removeButton.setAttribute('data-id', myLibrary.length - 1); // my button has to hav the smae id of bookDiv and to no use id we use th data-id which is an atribute of html
     titleDisplay.innerText = book.title                         // data-es un atributo de datos.
     authorDisplay.innerText = book.author
     pagesDisplay.innerText = book.pages
+    titleName.innerText = 'Title:'                        // data-es un atributo de datos.
+    authorName.innerText = 'Author:' 
+    pagesNumber.innerText = 'Pages:'
     if (book.status === 'read') {
       statusDisplay.innerText = 'Read';
     } else {
       statusDisplay.innerText = 'Unread';
     }
     container.appendChild(bookDiv);
+    bookDiv.appendChild(titleName);
     bookDiv.appendChild(titleDisplay);
+    bookDiv.appendChild(authorName);
     bookDiv.appendChild(authorDisplay);
+    bookDiv.appendChild(pagesNumber);
     bookDiv.appendChild(pagesDisplay);
-    bookDiv.appendChild(statusDisplay);
-    bookDiv.appendChild(removeButton);
+    bookDiv.appendChild(buttonsDiv);
+    buttonsDiv.appendChild(statusDisplay);
+    buttonsDiv.appendChild(removeButton);
     })
     deleteBtn()
     changeStatus()
