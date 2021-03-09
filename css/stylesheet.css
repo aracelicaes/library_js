@@ -6,6 +6,37 @@
   font-size: 16px;
 }
 
+body {
+  width: 50vw;
+  margin: auto;
+}
+
+.newBook {
+  width: 180px;
+  margin: auto;
+}
+
+body h1,
+.welcomeText {
+  text-align: center;
+}
+
 #theForm {
-  display: none;
+  display: block;
+  background-color: rgb(219, 234, 243);
+  padding: 2rem 2.5rem;
+  border-radius: 5px;
+}
+
+.formBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.formBox label {
+  font-size: 1.5rem;
+}
+
+.libraryDiv {
+  margin-bottom: 5rem;
 }

@@ -11,18 +11,19 @@ function Book(title, author, pages, status) {
   counter++
 }
 
+
 function createBook() {
   let titleInput = document.getElementById('title').value;
   let authorInput = document.getElementById('author').value;
   let pagesInput = document.getElementById('pages').value;
   let statusInput = document.getElementById('status').value;
   document.querySelector('form').reset();
-
   let newBook = new Book(titleInput, authorInput, pagesInput, statusInput);
   if (titleInput.length > 1 && authorInput.length > 1 && pagesInput > 0) {
   myLibrary.push(newBook);
   }
   console.log(myLibrary)
+  setLocalStorage();
 }
 
 function displayBook() {
@@ -77,6 +78,7 @@ const deleteBtn = () => {
       // console.log(myLibrary)
         displayBook()
       })
+      setLocalStorage();
     })
 }
 
@@ -92,8 +94,10 @@ const changeStatus = () => {
     btn.addEventListener('click', e => {
       getStatusValue(e)
     })
+  setLocalStorage();
   })
 }
+
 
 const btn = document.querySelector('#btn');
 btn.addEventListener('click', (e) => {
@@ -101,3 +105,21 @@ btn.addEventListener('click', (e) => {
   createBook();
   displayBook();
 }); 
+
+const setLocalStorage = () => {
+  window.localStorage.setItem('library', JSON.stringify(myLibrary));
+};
+
+const getLocalStorage = () => {
+  const collection = JSON.parse(window.localStorage.getItem('library'));
+  if (collection != null) {
+    collection.forEach (el => {
+      myLibrary.push(el);
+    });
+  }
+};
+
+window.addEventListener('DOMContentLoaded', () => {
+  getLocalStorage();
+  displayBook()
+});
