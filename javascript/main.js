@@ -23,7 +23,6 @@ function createBook() {
   myLibrary.push(newBook);
   }
   console.log(myLibrary)
-  setLocalStorage();
 }
 
 function displayBook() {
@@ -69,8 +68,13 @@ const deleteBtn = () => {
       console.log(myLibrary)
         displayBook()
       })
-    }) 
-    setLocalStorage();
+    })
+}
+
+const getStatusValue = (e) => {
+  e.target.innerHTML.toUpperCase() === 'READ' 
+                      ? e.target.innerHTML = 'Unread'
+                      : e.target.innerHTML = 'Read'
 }
 
 const changeStatus = () => {
@@ -80,13 +84,6 @@ const changeStatus = () => {
       getStatusValue(e)
     })
   })
-  setLocalStorage();
-}
-
-const getStatusValue = (e) => {
-  e.target.innerHTML.toUpperCase() === 'READ' 
-                      ? e.target.innerHTML = 'Unread' 
-                      : e.target.innerHTML = 'Read'
 }
 
 const btn = document.querySelector('#btn');
@@ -95,21 +92,3 @@ btn.addEventListener('click', (e) => {
   createBook();
   displayBook();
 }); 
-
-const setLocalStorage = () => {
-  window.localStorage.setItem('library', JSON.stringify(myLibrary));
-};
-
-const getLocalStorage = () => {
-  const collection = JSON.parse(window.localStorage.getItem('library'));
-  if (collection != null) {
-    collection.forEach (el => {
-      myLibrary.push(el);
-    });
-  }
-};
-
-window.addEventListener('DOMContentLoaded', () => {
-  getLocalStorage();
-  displayBook()
-});
