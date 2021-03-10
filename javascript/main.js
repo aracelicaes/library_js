@@ -101,6 +101,7 @@ function displayBook() {
     buttonsDiv.appendChild(statusDisplay);
     buttonsDiv.appendChild(removeButton);
   });
+  // eslint-disable-next-line no-use-before-define
   deleteBtn();
   changeStatus();
 }
@@ -109,7 +110,7 @@ const deleteBtn = () => {
   const removeBtn = document.querySelectorAll('.removeBtn'); // to return all of the removeBtn elements in a page
   removeBtn.forEach((btn) => {
     btn.addEventListener('click', (e) => {
-      myLibrary.splice(e.target.dataset.id - 1, 1);
+      myLibrary.splice(e.target.id - 1, 1);
       displayBook();
     });
     setLocalStorage();
