@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel='stylesheet' href='./css/stylesheet.css' type='text/css'>
+</head>
+<body>
+  <div class="top">
+    <div class="welcome d-flex flex-column">
+      <h1 class="mt-4">Welcome to the JS Library</h1>
+      <p class="welcomeText">Press the button below Create and Add a New Book to the Library!</p>
+      <button type="button" class="newBook btn btn-primary" onclick="bookForm()">New Book</button>
+    </div>
+    <form id="theForm" class="mt-4">
+      <div class="formBox">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" placeholder="Title Here...">
+      </div>
+      <div class="formBox">
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author" placeholder="Author Here...">
+      </div>
+      <div class="formBox">
+        <label for="pages">Pages:</label>
+        <input type="number" id="pages" name="pages" placeholder="Pages Here...">
+      </div>
+      <div class="formBox">
+        <label for="status">Select Read Status:</label>
+        <select name="status" id="status">
+          <option value="read">Read</option>
+          <option value="unread">Unread</option>
+        </select>
+      </div>
+      <button type="button" id="btn" class="btn btn-success mt-4">Submit</button>
+    </form>
+  </div>
+  <div id="library" class="libraryDiv d-flex flex-wrap mt-4">
+
+  </div>
+  
+  <script src="javascript/main.js"></script>
+  <script src="javascript/logic.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
