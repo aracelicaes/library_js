@@ -6,7 +6,7 @@
   font-size: 16px;
 }
 
-body {
+.top {
   width: 50vw;
   margin: auto;
 }
@@ -38,7 +38,15 @@ body h1,
 }
 
 .libraryDiv {
-  margin-bottom: 5rem;
+  width: 83vw;
+  margin: 2rem auto 5rem auto;
+}
+
+.libraryDiv div {
+  margin-right: 1rem;
+  padding: 2rem;
+  margin-top: 2.5rem;
+  background-color: rgb(219, 234, 243);
 }
 
 .libraryDiv div :nth-child(1) {
@@ -51,12 +59,6 @@ body h1,
 
 .libraryDiv div :nth-child(5) {
   font-weight: bold;
-}
-
-.libraryDiv div {
-  padding: 2rem;
-  margin-top: 2.5rem;
-  background-color: rgb(219, 234, 243);
 }
 
 .buttons-div {

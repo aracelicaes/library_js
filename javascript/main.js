@@ -101,6 +101,7 @@ function displayBook() {
     buttonsDiv.appendChild(statusDisplay);
     buttonsDiv.appendChild(removeButton);
   });
+  // eslint-disable-next-line no-use-before-define
   deleteBtn();
   changeStatus();
 }
@@ -125,13 +126,12 @@ const bookForm = () => {
   }
 };
 
-bookForm();
-
 const btn = document.querySelector('#btn');
 btn.addEventListener('click', (e) => {
   e.preventDefault();
   createBook();
   displayBook();
+  bookForm();
 });
 
 window.addEventListener('DOMContentLoaded', () => {
