@@ -9,7 +9,7 @@ const setLocalStorage = () => {
 // check this one *****
 const getLocalStorage = () => {
   const collection = JSON.parse(window.localStorage.getItem('library'));
-  if (collection != null) {
+  if (collection || collection == null) {
     collection.forEach(el => {
       myLibrary.push(el);
     });
@@ -17,6 +17,7 @@ const getLocalStorage = () => {
     counter = myLibrary[last].id + 1;
   }
 };
+
 
 function Book(title, author, pages, status) {
   this.id = counter;
@@ -110,10 +111,10 @@ const deleteBtn = () => {
   const removeBtn = document.querySelectorAll('.removeBtn'); // to return all of the removeBtn elements in a page
   removeBtn.forEach((btn) => {
     btn.addEventListener('click', (e) => {
-      myLibrary.splice(e.target.dataset.id - 1, 1);
+      myLibrary.splice(e.target.id - 1, 1);
+      setLocalStorage();
       displayBook();
     });
-    setLocalStorage();
   });
 };
 
