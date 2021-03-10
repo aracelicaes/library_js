@@ -22,7 +22,7 @@ body h1,
 }
 
 #theForm {
-  display: block;
+  display: none;
   background-color: rgb(219, 234, 243);
   padding: 2rem 2.5rem;
   border-radius: 5px;
